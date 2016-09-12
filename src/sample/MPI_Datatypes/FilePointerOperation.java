@@ -5,4 +5,6 @@ package sample.MPI_Datatypes;
  */
 public enum FilePointerOperation {
     READ, WRITE, SEEK
+
 }
+

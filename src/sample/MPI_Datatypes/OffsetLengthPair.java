@@ -6,7 +6,7 @@ package sample.MPI_Datatypes;
 public class OffsetLengthPair {
 
     private long offset; //The offset in bytes
-    private long length; //The length the accessible are from the offset
+    private long length; //The length accessible from the offset
 
     //Constructor
     public OffsetLengthPair(long offset, long length) {
