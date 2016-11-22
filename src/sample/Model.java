@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import sample.MPI_Datatypes.*;
 
 import java.io.*;
@@ -102,6 +106,42 @@ public class Model {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    //Currently assumes that all filePointers objects in the model are from the same file access
+    //Will add dynamic selection after static generation works
+    public Group createFilePointerGroup(int fileSize){
+        Group filePointers = new Group();
+
+        for (int i = 0; i < this.filePointerEvents.size(); i++){
+
+        }
+        return filePointers;
+    }
+
+    public Group createProcessPlanes(int fileSize){
+        //Create scaling references
+        Group processPlanes = new Group();
+        for (int i = 0; i < 11; i++){
+            int labelNumber = i * (fileSize / 10);
+            Label label = new Label(Integer.toString(labelNumber));
+            label.setTranslateX(80*i+15);
+            label.setTranslateY(5);
+            processPlanes.getChildren().add(label);
+            Line line = new Line();
+            line.setStartY(25);
+            line.setEndY(200); //Should be to the bottom of the visualization area
+            line.setStartX(80*i+20);
+            line.setEndX(80*i+20);
+            line.getStrokeDashArray().addAll(2d, 21d);
+            processPlanes.getChildren().add(line);
+        }
+        //Create Process Planes
+        //Again assumes the data is only one file open
+        for (int i = 0; i < fileOpenEvents.get(0).getNumberOfProcs(); i++){
+            Rectangle rectangle = new Rectangle();
+        }
+        return processPlanes;
     }
 
     //Getter and Setters

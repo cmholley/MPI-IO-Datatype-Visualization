@@ -1,31 +1,32 @@
 package sample;
 
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
-import javax.swing.*;
+public class Main extends Application {
 
-public class Main  {
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Group root = new Group();
+        primaryStage.setTitle("Hello World");
+        Scene scene = new Scene(root, 900, 825);
 
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("HelloWorldSwing");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Model model = new Model("logfile.txt");
 
-        //Add the ubiquitous "Hello World" label.
-        JLabel label = new JLabel("Hello World");
-        frame.getContentPane().add(label);
+        root.getChildren().add(model.createProcessPlanes(800));
 
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 
+
     public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+        launch(args);
     }
 }
